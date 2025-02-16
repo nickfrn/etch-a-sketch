@@ -1,3 +1,10 @@
+function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    // return an int value between "min" and "max" inclusive
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+};
+
 function createGrid(size) {
     for (let i = 0; i < (size * size); i++) {
         const cell = document.createElement('div');
@@ -8,7 +15,11 @@ function createGrid(size) {
         cell.classList.add('cellStyle');
     
         cell.addEventListener('mouseover', () => {
-            cell.classList.add('colored');
+            let red = getRandomInt(0, 255);
+            let green = getRandomInt(0, 255);
+            let blue = getRandomInt(0, 255);
+
+            cell.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`;
         })
     
         container.appendChild(cell);
