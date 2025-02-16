@@ -3,3 +3,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.cellStyle {
+    border: 1px solid black;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.colored {
+    background-color: black;
+}
