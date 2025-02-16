@@ -1,19 +1,34 @@
-// Create each div using a loop
+function createGrid(size) {
+    for (let i = 0; i < (size * size); i++) {
+        const cell = document.createElement('div');
+        const cellSize  = containerWidth * (1 / size);
+    
+        cell.style.width = `${cellSize}px`;
+        cell.style.height = `${cellSize}px`;
+        cell.classList.add('cellStyle');
+    
+        cell.addEventListener('mouseover', () => {
+            cell.classList.add('colored');
+        })
+    
+        container.appendChild(cell);
+    }
+    
+}
+
 const container = document.querySelector('.container');
 const containerWidth = container.offsetWidth;
 
-for (let i = 0; i < (16 * 16); i++) {
-    const cell = document.createElement('div');
-    const cellSize  = containerWidth * (1 / 16);
+const createBtn = document.querySelector('.createBtn');
 
-    cell.style.width = `${cellSize}px`;
-    cell.style.height = `${cellSize}px`;
-    cell.style.border = '1px solid black';
-    cell.style.flexShrink = '0';
-    cell.style.boxSizing = 'border-box';
+createBtn.addEventListener('click', () => {
+    let gridSize;
 
-    container.appendChild(cell);
-}
+    do {
+        gridSize = parseInt(prompt('Select size for your sketchpad [1 - 100]'));
+    } while (gridSize < 1 || gridSize > 100);
 
-// Make each div 1/nth of container to ensure a square grid
-// Append each div to container
+    container.innerHTML = '';
+
+    createGrid(gridSize);
+})
